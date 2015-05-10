@@ -1,0 +1,8 @@
+inherit kde4
+
+NAME="konsole"
+VERSION=4.14.3
+RELEASE=1
+CATEGORY="KDE"
+SUMMARY="KDE terminal emulator"
+DESCRIPTION=
