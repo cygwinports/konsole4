@@ -5,4 +5,6 @@ VERSION=4.14.3
 RELEASE=1
 CATEGORY="KDE"
 SUMMARY="KDE terminal emulator"
-DESCRIPTION=
+DESCRIPTION="Konsole is an X terminal emulator, often referred to as a terminal
+or a shell. It emulates a command line interface in a text only window."
+
