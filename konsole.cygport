@@ -2,9 +2,29 @@ inherit kde4
 
 NAME="konsole"
 VERSION=4.14.3
-RELEASE=1
+RELEASE=2
 CATEGORY="KDE"
 SUMMARY="KDE terminal emulator"
 DESCRIPTION="Konsole is an X terminal emulator, often referred to as a terminal
 or a shell. It emulates a command line interface in a text only window."
 
+PKG_NAMES="konsole konsole4-part"
+konsole_CONTENTS="
+	usr/bin/cygkdeinit4_konsole.dll
+	usr/bin/konsole.exe
+	usr/bin/konsoleprofile
+	usr/share/applications/kde4/konsole.desktop
+	usr/share/doc/HTML/en/konsole/
+	usr/share/kde4/services/ServiceMenus/konsole*.desktop
+"
+konsole4_part_SUMMARY="KDE 4 embedded terminal KPart"
+konsole4_part_CONTENTS="
+	usr/bin/cygkonsoleprivate.dll
+	usr/lib/kde4/libkonsolepart.dll
+	usr/share/doc/konsole/
+	usr/share/kde4/apps/kconf_update/konsole*
+	usr/share/kde4/apps/konsole/
+	usr/share/kde4/services/konsolepart.desktop
+	usr/share/kde4/servicetypes/terminalemulator.desktop
+"
+PKG_IGNORE="usr/lib/libkonsoleprivate.dll.a"
