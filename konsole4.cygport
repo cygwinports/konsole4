@@ -1,30 +1,36 @@
+ORIG_PN="konsole"
 inherit kde4
 
-NAME="konsole"
+NAME="konsole4"
 VERSION=4.14.3
-RELEASE=2
+RELEASE=3
 CATEGORY="KDE"
-SUMMARY="KDE terminal emulator"
+SUMMARY="KDE 4 terminal emulator"
 DESCRIPTION="Konsole is an X terminal emulator, often referred to as a terminal
 or a shell. It emulates a command line interface in a text only window."
 
-PKG_NAMES="konsole konsole4-part"
-konsole_CONTENTS="
-	usr/bin/cygkdeinit4_konsole.dll
-	usr/bin/konsole.exe
-	usr/bin/konsoleprofile
-	usr/share/applications/kde4/konsole.desktop
-	usr/share/doc/HTML/en/konsole/
-	usr/share/kde4/services/ServiceMenus/konsole*.desktop
-"
+PKG_NAMES="konsole4-part"
 konsole4_part_SUMMARY="KDE 4 embedded terminal KPart"
 konsole4_part_CONTENTS="
 	usr/bin/cygkonsoleprivate.dll
 	usr/lib/kde4/libkonsolepart.dll
-	usr/share/doc/konsole/
+	usr/share/doc/konsole4/
 	usr/share/kde4/apps/kconf_update/konsole*
 	usr/share/kde4/apps/konsole/
 	usr/share/kde4/services/konsolepart.desktop
 	usr/share/kde4/servicetypes/terminalemulator.desktop
 "
-PKG_IGNORE="usr/lib/libkonsoleprivate.dll.a"
+
+src_install() {
+	cd ${B}
+	kde4_install
+
+	pushd ${D}
+	rm -fr	usr/bin/cygkdeinit4_konsole.dll \
+		usr/bin/konsole.exe usr/bin/konsoleprofile \
+		usr/lib/libkonsoleprivate.dll.a \
+		usr/share/applications/kde4/konsole.desktop \
+		usr/share/doc/HTML/en/konsole/ \
+		usr/share/kde4/services/ServiceMenus/konsole*.desktop
+	popd
+}
